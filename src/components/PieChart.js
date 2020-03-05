@@ -3,9 +3,9 @@ import {Pie} from 'react-chartjs-2';
 
 class PieChartComponent extends React.Component {
 
-    constructor(props) {
-        super(props);        
-    }
+    // constructor(props) {
+    //     super(props);        
+    // }
 
     render() {
         return (

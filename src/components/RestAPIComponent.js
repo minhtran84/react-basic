@@ -2,21 +2,27 @@ import React from 'react';
 
 class RestAPIComponent extends React.Component {
 
-    constructor() {
+    // constructor() {
 
-        //store the output from API call
-        this.state = {
+    //     //store the output from API call
+    //     // this.state = {
 
-        }
-    }
+    //     // }
+    // }
 
     componentDidMount() {
-        fetch(url)
-            .then(res => res.json())
+
+        let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'
+
+        fetch(url, { 
+            mode: 'no-cors',
+            method: 'get',
+            headers: {  "Content-Type": "application/json" }            
+        }).then(res => res.json())
             .then((data) => {
-                this.setState( {} )
+                //this.setState( {} )
             })
-            .catch(console.log)
+            .catch(console.log);
     }
 
     render() {
