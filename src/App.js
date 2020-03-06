@@ -3,7 +3,7 @@ import './App.css';
 
 //import MyChart from './components/TheChart';
 //import ChartComponent from './components/ChartComponent';
-import PieChart from './components/PieChart';
+//import PieChart from './components/PieChart';
 
 import WebService from './components/RestAPIComponent';
 
@@ -28,7 +28,7 @@ class App extends React.Component {
 
   render() {
 
-    const { labels, datasets } =  this.state;
+    //const { labels, datasets } =  this.state;
 
     return (
       <div>
@@ -36,8 +36,8 @@ class App extends React.Component {
         {/* //pass data kiểu này cũng chạy */}
         {/* <PieChart labels={this.state.labels} datasets={this.state.datasets} /> */}
 
-        <PieChart labels={labels} datasets={datasets} />
-
+        {/* <PieChart labels={labels} datasets={datasets} /> */}
+        
         <WebService />
 
         {/* <ChartComponent chartData={[123, 456]} labels={this.state.labels} />

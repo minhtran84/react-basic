@@ -6,13 +6,18 @@ class RestAPIComponent extends React.Component {
         super(props);
         //store the output from API call
         this.state = {
+            error: null,
+            isLoaded: false,
+            status: null,
             items: []
         }
     }
 
     componentDidMount() {
 
-        let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'
+        //let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'
+
+        let sampleURL = 'http://dummy.restapiexample.com/api/v1/employees';
 
         // fetch(url, { 
         //     mode: 'no-cors',
@@ -26,30 +31,31 @@ class RestAPIComponent extends React.Component {
         //     })
         //     .catch(console.log);
 
-        fetch(url, { mode: 'no-cors' } )
+        fetch(sampleURL, { mode: 'no-cors' } )
             .then(res => res.json())
             .then(
-                (result) => {
-                this.setState({
-                    isLoaded: true,
-                    items: result.items
-                });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                });
+                (result) => {                    
+                    this.setState({
+                        isLoaded: true,
+                        status: result.status,
+                        items: result.data
+                    });
+                },                
+                    (error) => {
+                    this.setState({
+                        error: 'loi xay ra'
+                    });
                 }
             )
     }
 
     render() {
         return(
-            <div />
+            <div>
+                <h5>Testing REST API consuming...</h5>
+                <h5>{ this.state.status }</h5>
+                <h5>{ this.state.error }</h5>
+            </div>
         );
     }
 }
