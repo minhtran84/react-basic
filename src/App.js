@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 
-import PieChart from './components/ChartComponent';
-import Clock from './components/ClockComponent';
+//import PieChart from './components/ChartComponent';
+//import Clock from './components/ClockComponent';
+import WebService from './components/WebServiceComponent';
 
 class App extends React.Component {
 
@@ -17,7 +18,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Clock />
+          {/* <Clock /> */}
+          <WebService />
         </header>
       </div>
     );
