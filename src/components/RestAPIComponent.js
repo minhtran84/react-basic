@@ -8,16 +8,18 @@ class RestAPIComponent extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            status: null,
+            text: '',
             items: []
         }
     }
 
     componentDidMount() {
 
-        //let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'
+        let magic_proxy = 'https://cors-anywhere.herokuapp.com/';
 
-        let sampleURL = 'http://dummy.restapiexample.com/api/v1/employees';
+        let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'
+
+        //let sampleURL = 'http://dummy.restapiexample.com/api/v1/employees';
 
         // fetch(url, { 
         //     mode: 'no-cors',
@@ -31,32 +33,49 @@ class RestAPIComponent extends React.Component {
         //     })
         //     .catch(console.log);
 
-        fetch(sampleURL, { mode: 'no-cors' } )
-            .then(res => res.json())
+        fetch( magic_proxy + url )
+            .then(res => res.text())
             .then(
-                (result) => {                    
+                (text) => {            
                     this.setState({
                         isLoaded: true,
-                        status: result.status,
-                        items: result.data
+                        items: JSON.parse(text.substring(76, text.length - 42))
+                        //text: text.substring(76, text.length - 42),                                         
                     });
                 },                
                     (error) => {
                     this.setState({
-                        error: 'loi xay ra'
+                        isLoaded: true,
+                        error: 'something wrong'
                     });
                 }
             )
     }
 
     render() {
-        return(
-            <div>
-                <h5>Testing REST API consuming...</h5>
-                <h5>{ this.state.status }</h5>
-                <h5>{ this.state.error }</h5>
-            </div>
-        );
+
+        const { error, isLoaded, items } = this.state;
+
+        if (error) {
+            return <div>Error: {error}</div>;
+        }
+        else if (!isLoaded) {
+            return <div>Loading...</div>;
+        }
+        else {
+            return(
+                <div>
+                    <h5>Testing REST API consuming...</h5>                    
+                    <ul>
+                        {items.map(item => (
+                            <li key={item.dv_id}>
+                                {item.dv_ten}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }        
     }
 }
 
