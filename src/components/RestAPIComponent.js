@@ -3,44 +3,53 @@ import React from 'react';
 class RestAPIComponent extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props);        
+
         //store the output from API call
         this.state = {
             error: null,
             isLoaded: false,
             text: '',
+            item: {},
             items: []
         }
     }
 
+    componentWillMount() {
+        clearInterval(this.timerID);
+    }
+
     componentDidMount() {
 
-        let magic_proxy = 'https://cors-anywhere.herokuapp.com/';
+        this.timerID = setInterval(
+            () => this.tick(),
+            30000
+          );        
+        
+    }    
 
-        let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'
+    //Call webservice for each interval
+    tick() {
 
-        //let sampleURL = 'http://dummy.restapiexample.com/api/v1/employees';
+        const magic_proxy = 'https://cors-anywhere.herokuapp.com/';
 
-        // fetch(url, { 
-        //     mode: 'no-cors',
-        //     method: 'get',
-        //     headers: {  "Content-Type": "application/json" }            
-        // }).then(res => res.json())
-        //     .then((result) => {
-        //         this.setState({
-        //             items: result.items
-        //         })
-        //     })
-        //     .catch(console.log);
+        //let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'        
 
-        fetch( magic_proxy + url )
+        let year = 2020
+
+        let companyid = 9 //So Cong thuong
+
+        let url_thongke = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/getThongKe' + '?nam=' + year + '&companyid=' + companyid         
+
+        fetch( magic_proxy + url_thongke )
             .then(res => res.text())
             .then(
                 (text) => {            
                     this.setState({
                         isLoaded: true,
-                        items: JSON.parse(text.substring(76, text.length - 42))
-                        //text: text.substring(76, text.length - 42),                                         
+                        //items: JSON.parse(text.substring(76, text.length - 42))
+                        item: JSON.parse(text.substring(text.indexOf('<ns:return>') + 11, text.indexOf('</ns:return>'))),
+                        text: text.substring(text.indexOf('<ns:return>') + 11, text.indexOf('</ns:return>'))                                        
                     });
                 },                
                     (error) => {
@@ -54,7 +63,7 @@ class RestAPIComponent extends React.Component {
 
     render() {
 
-        const { error, isLoaded, items } = this.state;
+        const { error, isLoaded, item, items } = this.state;
 
         if (error) {
             return <div>Error: {error}</div>;
@@ -67,12 +76,15 @@ class RestAPIComponent extends React.Component {
                 <div>
                     <h5>Testing REST API consuming...</h5>                    
                     <ul>
-                        {items.map(item => (
+                        {/* {items.map(item => (
                             <li key={item.dv_id}>
                                 {item.dv_ten}
                             </li>
-                        ))}
+                        ))} */}
                     </ul>
+                    <h6>Tong tiep nhan: {item.tongtiepnhan}</h6>
+                    <h6>Xu ly dung han: {item.xulydunghan}</h6>
+                    <h6>Xu ly tre han: {item.xulytrehan}</h6>
                 </div>
             );
         }        
