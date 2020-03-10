@@ -7,6 +7,8 @@ import './App.css';
 
 import WebService from './components/RestAPIComponent';
 
+import SomethingComponent from './components/SomethingComponent';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -39,6 +41,8 @@ class App extends React.Component {
         {/* <PieChart labels={labels} datasets={datasets} /> */}
         
         <WebService />
+
+        {/* <SomethingComponent /> */}
 
         {/* <ChartComponent chartData={[123, 456]} labels={this.state.labels} />
         <MyChart values={[123, 456]} labels={labels} /> */}

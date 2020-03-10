@@ -1,5 +1,11 @@
 import React from 'react';
 
+//if the proxy is defined with 'var/const' here (outside any function), 
+//then it's accessible anywhere OR Global scope
+//var magic_proxy = 'https://cors-anywhere.herokuapp.com/';
+
+const magic_proxy = 'https://cors-anywhere.herokuapp.com/'; //this value will not be changed
+
 class RestAPIComponent extends React.Component {
 
     constructor(props) {
@@ -15,24 +21,8 @@ class RestAPIComponent extends React.Component {
         }
     }
 
-    componentWillMount() {
-        clearInterval(this.timerID);
-    }
-
     componentDidMount() {
-
-        this.timerID = setInterval(
-            () => this.tick(),
-            30000
-          );        
         
-    }    
-
-    //Call webservice for each interval
-    tick() {
-
-        const magic_proxy = 'https://cors-anywhere.herokuapp.com/';
-
         //let url = 'http://motcua.soctrang.gov.vn/cgate-congchung-portlet/services/selectData/layDanhSachDonVi'        
 
         let year = 2020
@@ -58,8 +48,8 @@ class RestAPIComponent extends React.Component {
                         error: 'something wrong'
                     });
                 }
-            )
-    }
+            )                     
+    }                       
 
     render() {
 
