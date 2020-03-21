@@ -1,0 +1,23 @@
+.simplecard {
+    background-color: rgb(39,42,61);
+    color: rgb(231,231,241);
+}
+
+.simplecard_header {
+    color: rgb(134,136,151);
+}
+
+.simplecard_body_icon {
+    font-size: 30px;
+    color: #51A3A3;
+}
+
+.simplecard_body_icon_sbn {
+    font-size: 30px;
+    color: #CB904D;
+}
+
+.simplecard_body_icon_quay {
+    font-size: 30px;
+    color: #75485E;
+}
