@@ -1,0 +1,14 @@
+.chartcard {
+    background-color: rgb(39,42,61);
+    color: rgb(231,231,241);
+}
+
+.chartcard_header {
+    color: rgb(134,136,151);
+}
+
+.chartcard_body {
+    display: block; 
+    height: 204px; 
+    width: 408px;
+}

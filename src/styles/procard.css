@@ -1,0 +1,28 @@
+.procard {
+    background-color: rgb(39,42,61);
+    color: rgb(231,231,241);
+}
+
+.procard_header {
+    color: rgb(134,136,151);
+}
+
+.procard_body_icon_truochan {
+    color: #5fad56;
+}
+
+.procard_body_icon_dunghan {
+    color: #F4A259;;
+}
+
+.procard_body_icon_trehan {
+    color: #E55934;
+}
+
+.procard_body_icon_mucdo3 {
+    color: #F2C14E;
+}
+
+.procard_body_icon_mucdo4 {
+    color: #8CB369;
+}
