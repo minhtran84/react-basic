@@ -3,8 +3,6 @@ import './App.css';
 
 import Navigation from './components/Navigation';
 import SimpleCard from './components/SimpleCard';
-import SimpleCardSBN from './components/SimpleCardSBN';
-import SimpleCardQuay from './components/SimpleCardQuay';
 
 //import PieChart from './components/ChartComponent';
 //import Clock from './components/ClockComponent';
@@ -29,13 +27,13 @@ class App extends React.Component {
             <div class="container mt-3 mb-3">
                 <div class="row">
                     <div class="col-md-4">
-                        <SimpleCard />
+                        <SimpleCard header="Tổng số TTHC" number="1089" icon="faFileAlt"/>
                     </div>
                     <div class="col-md-4">
-                        <SimpleCardSBN />
+                        <SimpleCard header="Sở ngành" number="17" icon="faBuilding"/>
                     </div>
                     <div class="col-md-4">
-                        <SimpleCardQuay />
+                        <SimpleCard header="Quầy giao dịch" number="23" icon="faDesktop"/>
                     </div>
                 </div>
             </div>
