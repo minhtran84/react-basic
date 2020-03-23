@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import SimpleCard from './components/SimpleCard';
 import ProCard from './components/ProCard';
 import ChartCard from './components/ChartCard';
+import Footer from './components/Footer';
 
 //import PieChart from './components/ChartComponent';
 //import Clock from './components/ClockComponent';
@@ -66,6 +67,8 @@ class App extends React.Component {
             </div>
           </div>
         </div>{/* end Third Row */}
+
+        <Footer />
 
       </div>//end div app
     );
