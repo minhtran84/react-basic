@@ -11,21 +11,11 @@ import {
 } from '@material-ui/core';
 // import bookImage from '../../images/startup_nation.jpg';
 import bookImage from '../../images/book.jpg';
-
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 345
-    },
-    cardContent: {
-        background: '#424242'
-    },
-})
+import styles from './MediaCard.module.css';
 
 const MediaCard = () => {
-    const classes = useStyles();
-
     return (
-        <Card className={classes.root}>
+        <Card className={styles.root}>
             <CardActionArea>
                 <CardMedia
                     component="img"
@@ -35,7 +25,7 @@ const MediaCard = () => {
                     title="Startup Nation"
                 >
                 </CardMedia>
-                <CardContent className={classes.cardContent}>
+                <CardContent className={styles.cardBody}>
                     <Typography gutterBottom variant="h5" component="h2">
                         Startup Nation
                     </Typography>
@@ -44,11 +34,11 @@ const MediaCard = () => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions className={classes.cardContent}>
-                <Button size="small" color="secondary">
+            <CardActions className={styles.cardBody}>
+                <Button size="small" color="primary">
                     Share
                 </Button>
-                <Button size="small" color="secondary">
+                <Button size="small" color="primary">
                     Learn More
                 </Button>
             </CardActions>
